@@ -2,12 +2,12 @@
 
 <hr>
 
-<form #courseAddForm="ngForm" (ngSubmit)="save(courseAddForm)">
+<form #courseAddForm="ngForm">
   <div class="form-group row">
       <label class="col-sm-2 col-form-label">Name:</label>
       <div class="col-sm-10">
           <input required name="name" class="form-control" [(ngModel)]="course.name" #name="ngModel">
-          <div class="invalid-feedback">
+          <div *ngIf="name.hasError('required') && name.touched" class="form-control-feedback">
               <span>Course name is required</span>
           </div>
       </div>
@@ -17,7 +17,7 @@
     <label class="col-sm-2 col-form-label">Code:</label>
     <div class="col-sm-10">
         <input required name="code" class="form-control" [(ngModel)]="course.code" #code="ngModel">
-        <div class="invalid-feedback">
+        <div *ngIf="code.hasError('required') && code.touched" class="form-control-feedback">
             <span>Course code is required</span>
         </div>
     </div>
@@ -28,7 +28,7 @@
       <div class="col-sm-10">
           <input required name="price" type="number" class="form-control"
           [(ngModel)]="course.price" #price="ngModel">
-          <div class="invalid-feedback">
+          <div *ngIf="price.hasError('required') && price.touched" class="form-control-feedback">
               <span>Course price is required</span>
           </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="col-sm-10">
           <input required name="rating" type="number" class="form-control"
           [(ngModel)]="course.rating" #rating="ngModel">
-          <div class="invalid-feedback">
+          <div *ngIf="rating.hasError('required') && rating.touched" class="form-control-feedback">
               <span>Course rating is required</span>
           </div>
       </div>
@@ -50,7 +50,7 @@
       <div class="col-sm-10">
           <textarea required name="description" class="form-control" [(ngModel)]="course.description" #description="ngModel">
           </textarea>
-          <div class="invalid-feedback">
+          <div *ngIf="description.hasError('required') && description.touched" class="form-control-feedback">
               <span>Course description is required</span>
           </div>
       </div>
@@ -60,9 +60,6 @@
     <label class="col-sm-2 col-form-label">Image:</label>
     <div class="col-sm-10">
       <input type="file" name="file"/>
-      <div class="invalid-feedback">
-          <span>Course description is required</span>
-      </div>
     </div>
   </div>
   <button [disabled]="courseAddForm.invalid" (click)="save(courseAddForm)" class="btn btn-primary mr-2">Save</button>
