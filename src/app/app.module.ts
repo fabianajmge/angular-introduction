@@ -1,3 +1,4 @@
+import { CourseAddComponent } from './courses/course-add.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +21,8 @@ import { CourseInfoComponent } from './courses/course-info.component';
     ReplacePipe,
     NavBarComponent,
     Error404Component,
-    CourseInfoComponent
+    CourseInfoComponent,
+    CourseAddComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,9 @@ import { CourseInfoComponent } from './courses/course-info.component';
     RouterModule.forRoot([
       {
         path: 'courses', component: CourseListComponent
+      },
+      {
+        path: 'courses/add', component: CourseAddComponent
       },
       {
         path: 'courses/info/:id', component: CourseInfoComponent
