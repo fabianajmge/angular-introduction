@@ -28,6 +28,10 @@ export class CourseService {
         }
     }
 
+    deleteById(id: number): Observable<any> {
+      return this.httpCliente.delete<Course>(`${this.courseUrl}/${id}`);
+    }
+
 }
 
 var COURSES: Course[] = [
