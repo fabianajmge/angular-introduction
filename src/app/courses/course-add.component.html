@@ -59,7 +59,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Image:</label>
     <div class="col-sm-10">
-      <input type="file" name="file"/>
+      <input type="file" name="file" (change)="readUrlImage($event)" [(ngModel)]="course.imageUrl"/>
     </div>
   </div>
   <button [disabled]="courseAddForm.invalid" (click)="save(courseAddForm)" class="btn btn-primary mr-2">Save</button>

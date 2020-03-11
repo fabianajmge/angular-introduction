@@ -13,8 +13,10 @@ export class CourseAddComponent {
   constructor(private route: Router, private courseService: CourseService) {}
 
   course = new Course();
+  image: any = null;
 
   save(form: NgForm): void {
+    console.log('img', this.course)
     this.courseService.save(this.course).subscribe({
       next: course => console.log('Saved with sucess', course),
       error: err => console.log('Error', err)
@@ -23,5 +25,17 @@ export class CourseAddComponent {
 
   back(): void {
     this.route.navigate(['/courses']);
+  }
+
+  readUrlImage(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = (event: ProgressEvent) => {
+        this.image = (<FileReader>event.target).result;
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }
