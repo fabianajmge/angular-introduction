@@ -7,23 +7,21 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CourseListComponent } from './courses/course-list.component';
-import { StarComponent } from './star/star.component';
-import { ReplacePipe } from './pipe/replace.pipe';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { Error404Component } from './error-404/error-404.component';
 import { CourseInfoComponent } from './courses/course-info.component';
 import { CourseModule } from './courses/course.module';
+import { CoreModule } from './core/core.module';
+import { Error404Component } from './core/component/error-404/error-404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent,
     Error404Component
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    CoreModule,
     CourseModule,
     RouterModule.forRoot([
       {
@@ -40,7 +38,7 @@ import { CourseModule } from './courses/course.module';
       },
       {
         path: '**', component: Error404Component
-      }
+    }
     ])
   ],
   providers: [],
